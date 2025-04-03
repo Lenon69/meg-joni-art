@@ -9,14 +9,14 @@
     content="Profesjonalna artystka specjalizująca się w abstrakcyjnym malarstwie emocjonalnym. Unikalne dzieła sztuki współczesnej pełne koloru i ekspresji.">
   <meta name="keywords"
     content="abstrakcyjne malarstwo, sztuka współczesna, artystka malarka, obrazy abstrakcyjne, sztuka emocjonalna">
-  <meta name="author" content="Imię Nazwisko">
+  <meta name="author" content="Meg Joni">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Magia Abstrakcji | Emocje w Kolorze">
   <meta property="og:description" content="Galeria unikalnych abstrakcyjnych dzieł sztuki współczesnej">
-  <meta property="og:url" content="https://przykladowastrona.pl/">
-  <meta property="og:image" content="https://przykladowastrona.pl/obraz-share.jpg">
+  <meta property="og:url" content="http://">
+  <meta property="og:image" content="assets/megjoniart.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
@@ -47,11 +47,35 @@
   </section>
 
   <section class="gallery" id="gallery">
-    <div class="gallery-item"><img src="assets/first.png" alt="Abstrakcyjna kompozycja 'Tęsknota'" loading="lazy"></div>
-    <div class="gallery-item"><img src="assets/second.png" alt="Abstrakcja 'Nieskończoność'" loading="lazy"></div>
-    <div class="gallery-item"><img src="assets/third.png" alt="Dzieło 'Między Barwami'" loading="lazy"></div>
+    <div class="gallery-item" data-title="Tęsknota" data-description="Abstrakcyjna kompozycja inspirowana nostalgią"
+      data-feelings="Powstał w okresie refleksji nad ulotnością chwil" data-price="8 400 zł">
+      <img src="assets/first.png" alt="Abstrakcyjna kompozycja 'Tęsknota'" loading="lazy">
+    </div>
+    <div class="gallery-item" data-title="Nieskończoność" data-description="Do zrobienia!" data-feelings="Do zrobienia!"
+      data-price="9 200 zł">
+      <img src="assets/second.png" alt="Abstrakcja 'Nieskończoność'" loading="lazy">
+    </div>
+    <div class="gallery-item" data-title="Między barwami" data-description="Do zrobienia" data-feelings="Do zrobienia!"
+      data-price="12 700 zł">
+      <img src="assets/third.png" alt="Dzieło 'Między Barwami'" loading="lazy">
+    </div>
   </section>
-
+  <!-- Lightbox -->
+  <div class="lightbox">
+    <div class="lightbox-content">
+      <span class="close">&times;</span>
+      <img class="lightbox-image">
+      <div class="image-info">
+        <h2 class="image-title"></h2>
+        <p class="image-feelings"></p>
+        <p class="image-description"></p>
+        <div class="price-tag">
+          <span class="price"></span>
+          <button class="buy-button" data-action="contact">Zapytaj o dostępność</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <section class="about-section" id="about">
     <h2>O Artystce</h2>
     <p>Autorka, Meg Joni, jest niezwykle kreatywną artystką, której obrazy przepełnione są artystyczną duszą. W każdy
@@ -71,19 +95,7 @@
       <button type="submit">Wyślij</button>
     </form>
   </section>
-
-  <script>
-    window.addEventListener('scroll', () => {
-      const navbar = document.querySelector('.navbar');
-      if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(10, 10, 10, 0.9)';
-        navbar.style.backdropFilter = 'blur(10px)';
-      } else {
-        navbar.style.background = 'linear-gradient(45deg, var(--accent-1), var(--accent-2))';
-        navbar.style.backdropFilter = 'blur(10px)';
-      }
-    });
-  </script>
+  <script src="script.js"></script> <!-- Najlepsze miejsce -->
 </body>
 
 </html>
