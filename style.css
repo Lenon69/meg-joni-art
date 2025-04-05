@@ -290,6 +290,39 @@ button {
   max-height: 80%;
 }
 
+
+.lightbox-content.zoomed .arrow,
+.lightbox-content.zoomed .image-info {
+  display: none;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--text-light);
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 1001;
+  padding: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.arrow:hover {
+  transform: translateY(-50%) scale(1.1);
+}
+
+.arrow-left {
+  left: 10px;
+}
+
+.arrow-right {
+  right: 10px;
+}
+
+
 .image-info {
   padding: 1.5rem;
   text-align: center;
@@ -420,5 +453,4 @@ button {
     .image-feelings, .image-description {
       font-size: 0.9rem;
     }
-  }
-}
+  }}

@@ -61,6 +61,13 @@ const lightboxController = (() => {
       currentScale = currentScale === 1 ? 1.5 : 1;
       lightboxImage.style.transform = `scale(${currentScale})`;
     }
+
+    // Dodaj lub usuń klasę 'zoomed' w lightboxContent
+    if (currentScale !== 1) {
+      lightboxContent.classList.add('zoomed');
+    } else {
+      lightboxContent.classList.remove('zoomed');
+    }
   };
 
   const initZoom = () => {
@@ -114,6 +121,11 @@ const lightboxController = (() => {
           case 'ArrowRight': this.showNextImage(); break;
         }
       });
+
+      // Wewnątrz funkcji setupEventListeners:
+      document.querySelector('.arrow-left').addEventListener('click', () => this.showPrevImage());
+      document.querySelector('.arrow-right').addEventListener('click', () => this.showNextImage());
+
 
       // Buy button
       document.querySelectorAll('.buy-button').forEach(button => {
