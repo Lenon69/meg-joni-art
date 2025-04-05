@@ -48,11 +48,43 @@ const lightboxController = (() => {
   let currentGalleryItems = [];
   let currentImageIndex = 0;
 
+  let currentScale = 1;
+
+
+  const handleZoom = () => {
+    currentScale = currentScale === 1 ? 2 : 1;
+    lightboxImage.style.transform = `scale(${currentScale})`;
+    lightboxImage.classList.toggle('zoomed');
+
+    // Responsywny zoom na mobile
+    if (window.innerWidth <= 768) {
+      currentScale = currentScale === 1 ? 1.5 : 1;
+      lightboxImage.style.transform = `scale(${currentScale})`;
+    }
+  };
+
+  const initZoom = () => {
+    // Kliknięcie na desktop
+    lightboxImage.addEventListener('click', handleZoom);
+
+    // Dotknięcie na mobile
+    let lastTap = 0;
+    lightboxImage.addEventListener('touchend', (e) => {
+      const currentTime = Date.now();
+      if (currentTime - lastTap < 300) {
+        handleZoom();
+      }
+      lastTap = currentTime;
+    });
+  };
+
+
   // Public methods
   return {
     init() {
       this.setupGalleryItems();
       this.setupEventListeners();
+      initZoom()
     },
 
     setupGalleryItems() {
@@ -122,6 +154,12 @@ const lightboxController = (() => {
     },
 
     closeLightbox() {
+      if (currentScale !== 1) {
+        currentScale = 1;
+        lightboxImage.style.transform = 'scale(1)';
+        lightboxImage.classList.remove('zoomed');
+      }
+
       lightbox.classList.remove('active');
       document.body.style.overflow = 'auto';
       currentGalleryItems = [];

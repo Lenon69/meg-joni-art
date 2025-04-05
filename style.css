@@ -283,6 +283,11 @@ button {
   object-fit: contain;
   padding: 2rem;
   background: #000;
+
+  cursor: zoom-in;
+  transition: transform 0.3s ease;
+  max-width: 100%;
+  max-height: 80%;
 }
 
 .image-info {
