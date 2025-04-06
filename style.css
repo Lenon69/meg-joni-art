@@ -2,9 +2,11 @@
 
 :root {
   --main-bg: #0a0a0a;
-  --accent-1: #6a1b9a;
-  --accent-2: #c2185b;
+  --accent-1: #911325;          /* Główny kolor logo */
+  --accent-2: #d32f2f;          /* Cieplejszy odcień czerwieni */
+  --accent-3: #ffd740;          /* Złoty akcent kontrastowy */
   --text-light: #f8f8f8;
+  --section-gradient: linear-gradient(45deg, #1a1a1a 30%, #2d2d2d 100%);
 }
 
 * {
@@ -26,7 +28,11 @@ body {
   top: 0;
   width: 100%;
   padding: 1.5rem;
-  background: linear-gradient(45deg, var(--accent-1), var(--accent-2));
+  background: linear-gradient(
+    45deg, 
+    var(--accent-1) 0%, 
+    var(--accent-2) 100%
+  );
   backdrop-filter: blur(10px);
   z-index: 1000;
   display: flex;
@@ -82,7 +88,11 @@ body {
     position: absolute;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle, var(--accent-1), transparent 60%);
+    background: radial-gradient(
+    circle, 
+    var(--accent-1) 0%, 
+    transparent 60%
+    );
     opacity: 0.1;
     animation: float 20s infinite linear;
   }
@@ -126,6 +136,7 @@ body {
   
   &:hover {
     transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(145,19,37,0.3);
   }
   
   img {
@@ -139,7 +150,7 @@ body {
 /* ============ ABOUT SECTION ============ */
 .about-section {
   padding: 5rem 2rem;
-  background: linear-gradient(45deg, #1a1a1a, #2d2d2d);
+  background: var(--section-gradient);
   text-align: center;
 
   p {
@@ -222,14 +233,19 @@ body {
     transition: all 0.3s ease;
     
     &:focus {
-      outline: 2px solid var(--accent-1);
+      outline: 2px solid var(--accent-3);
       background: rgba(255,255,255,0.2);
     }
   }
 }
 
 button {
-  background: linear-gradient(45deg, var(--accent-1), var(--accent-2));
+  background: linear-gradient(
+    45deg, 
+    var(--accent-1) 0%, 
+    var(--accent-2) 50%, 
+    var(--accent-3) 100%
+  );
   color: white;
   padding: 1rem 2rem;
   border: none;
@@ -326,7 +342,7 @@ button {
 .image-info {
   padding: 1.5rem;
   text-align: center;
-  background: linear-gradient(45deg, #1a1a1a, #2d2d2d);
+  background: var(--section-gradient);
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -342,7 +358,7 @@ button {
   font-style: italic;
   font-size: 0.95em;
   color: rgba(255,255,255,0.8);
-  border-left: 3px solid var(--accent-2);
+  border-left: 3px solid var(--accent-3);
   padding-left: 1rem;
   margin: 1rem 0;
 }
@@ -360,7 +376,8 @@ button {
   gap: 1rem;
   margin-top: 2rem;
   padding-top: 1.5rem;
-  border-top: 1px solid rgba(255,255,255,0.1);
+  border-top: 1px solid rgba(255,215,64,0.2);
+
 
   .price {
     font-size: 1.5rem;
@@ -384,7 +401,12 @@ button {
 }
 
 .buy-button {
-  background: linear-gradient(45deg, var(--accent-1), var(--accent-2));
+  background: linear-gradient(
+    45deg, 
+    var(--accent-1) 0%, 
+    var(--accent-2) 50%, 
+    var(--accent-3) 100%
+  );
   color: white;
   padding: 0.8rem 1.5rem;
   border: none;
@@ -411,6 +433,7 @@ button {
 
   .hero-content h1 {
     font-size: 2.5rem;
+    text-shadow: 0 0 15px rgba(145,19,37,0.6);
   }
 
   .gallery {

@@ -51,25 +51,37 @@ const lightboxController = (() => {
   let currentScale = 1;
 
 
-  const handleZoom = () => {
+  const handleZoom = (e) => {
+    // Pobierz pozycję obrazu
+    const rect = lightboxImage.getBoundingClientRect();
+    const offsetX = e.clientX - rect.left;
+    const offsetY = e.clientY - rect.top;
+
+    // Oblicz procentowe położenie kliknięcia względem obrazu
+    const percentX = (offsetX / rect.width) * 100;
+    const percentY = (offsetY / rect.height) * 100;
+
+    // Ustaw transform-origin na miejsce kliknięcia
+    lightboxImage.style.transformOrigin = `${percentX}% ${percentY}%`;
+
+    // Przełącz zoom
     currentScale = currentScale === 1 ? 2 : 1;
     lightboxImage.style.transform = `scale(${currentScale})`;
     lightboxImage.classList.toggle('zoomed');
 
-    // Responsywny zoom na mobile
+    // Dla urządzeń mobilnych (opcjonalnie)
     if (window.innerWidth <= 768) {
       currentScale = currentScale === 1 ? 1.5 : 1;
       lightboxImage.style.transform = `scale(${currentScale})`;
     }
 
-    // Dodaj lub usuń klasę 'zoomed' w lightboxContent
+    // Aktualizuj klasę 'zoomed' na lightboxContent, aby ukryć elementy interfejsu
     if (currentScale !== 1) {
       lightboxContent.classList.add('zoomed');
     } else {
       lightboxContent.classList.remove('zoomed');
     }
   };
-
   const initZoom = () => {
     // Kliknięcie na desktop
     lightboxImage.addEventListener('click', handleZoom);
